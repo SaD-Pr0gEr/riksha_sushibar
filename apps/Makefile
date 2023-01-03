@@ -1,2 +1,2 @@
 app:
-	django-admin startapp $(app_name) --settings=marva_crm.settings.$(settings)
+	django-admin startapp $(app_name) --settings=config.settings.$(settings)
