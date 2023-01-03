@@ -5,8 +5,6 @@ name = "pypi"
 
 [packages]
 django = "*"
-django-channels = "*"
-python-dotenv = "*"
 
 [dev-packages]
 django-debug-toolbar = "*"
