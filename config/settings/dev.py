@@ -1,5 +1,3 @@
-import debug_toolbar.middleware
-
 from .base import *
 
 SECRET_KEY = 'django-insecure-c07cw(59(7$rdfuc2m34_p=tp7#9_*wh+&*r81do#b38)-i@02'
