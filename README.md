@@ -17,6 +17,9 @@ pipenv install
 pipenv install --dev
 ```
 
+## Install environment vars
+rename `example.env` to `.env` and set all values to actual values
+
 ## Setup and run first time
 This script sets dev settings, makes migrations and runs dev server
 ```shell
