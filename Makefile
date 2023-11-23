@@ -1,8 +1,12 @@
+dev:
+	export DJANGO_SETTINGS_MODULE=core.settings.dev
+prod:
+	export DJANGO_SETTINGS_MODULE=core.settings.prod
 migrate:
-	python manage.py makemigrations --settings=core.settings.$(settings) && python manage.py migrate --settings=core.settings.$(settings)
+	python manage.py makemigrations && python manage.py migrate
 run:
-	python manage.py runserver --settings=core.settings.$(settings)
+	python manage.py runserver
 static:
-	python manage.py collectstatic --settings=core.settings.$(settings)
+	python manage.py collectstatic
 admin:
-	python manage.py createsuperuser --settings=core.settings.$(settings)
+	python manage.py createsuperuser
