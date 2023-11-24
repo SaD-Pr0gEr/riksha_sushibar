@@ -1,4 +1,4 @@
-# Django Basic Project config
+# Django Project template
 
 
 ## Installation
@@ -8,30 +8,30 @@
 git clone https://github.com/SaD-Pr0gEr/django_basic_project.git
 ```
 
-* Install dependencies
+* Install dependencies & activate environment
 ```shell
 #prod
 pipenv install
 
 #dev
 pipenv install --dev
+
+pipenv shell
 ```
 
 ## Install environment vars
-rename `example.env` to `.env` and set all values to actual values
-
-## Setup and run first time
-This script sets dev settings, makes migrations and runs dev server
-```shell
-sh ./setup.sh
-```
+* rename `example.env` to `.env` and set all values to actual values
 
 ## Run
 Run project with make
 ```shell
-make run settings=dev
+make run
+
+# RUN IT MANUALLY WITH SETTINGS
+# dev
+python manage.py runserver settings=core.settings.dev
 # prod settings
-make run settings=prod
+python manage.py runserver settings=core.settings.prod
 ```
 ## !!!WARNING!!!
 Don't use make run on production(use gunicorn/uvicorn etc.)

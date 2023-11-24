@@ -1,7 +1,3 @@
-dev:
-	export DJANGO_SETTINGS_MODULE=core.settings.dev
-prod:
-	export DJANGO_SETTINGS_MODULE=core.settings.prod
 migrate:
 	python manage.py makemigrations && python manage.py migrate
 run:
