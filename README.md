@@ -29,9 +29,9 @@ make run
 
 # RUN IT MANUALLY WITH SETTINGS
 # dev
-python manage.py runserver settings=core.settings.dev
+python manage.py runserver --settings=core.settings.dev
 # prod settings
-python manage.py runserver settings=core.settings.prod
+python manage.py runserver --settings=core.settings.prod
 ```
 ## !!!WARNING!!!
 Don't use make run on production(use gunicorn/uvicorn etc.)
