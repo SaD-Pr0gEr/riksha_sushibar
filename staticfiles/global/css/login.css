@@ -1,0 +1,17 @@
+.auth-form-container {
+    margin: 100px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.auth-form {
+    padding: 25px 40px;
+    width: 20%;
+}
+
+.auth-form button {
+    margin-bottom: 30px;
+}
