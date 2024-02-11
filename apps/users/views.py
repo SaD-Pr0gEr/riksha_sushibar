@@ -4,12 +4,14 @@ from django.shortcuts import render, redirect
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 
-from apps.users.forms import LoginForm
+from .decorators import anonym_required_obj
+from .forms import LoginForm
 
 
 class UserLogin(View):
     template = 'users/pages/auth_page.html'
 
+    @anonym_required_obj
     def get(self, request: HttpRequest) -> HttpResponse:
         form = LoginForm()
         return render(
@@ -22,6 +24,7 @@ class UserLogin(View):
             }
         )
 
+    @anonym_required_obj
     def post(self, request: HttpRequest) -> HttpResponse:
         form = LoginForm(request.POST)
         auth_error = False
