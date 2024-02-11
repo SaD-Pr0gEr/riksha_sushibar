@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views import View
 
 from .decorators import anonym_required_obj
-from .forms import LoginForm
+from .forms import LoginForm, UserCreationForm
 
 
 class UserLogin(View):
@@ -50,3 +50,35 @@ class UserLogin(View):
         login(request, auth_user)
         # TODO: Когда добавишь гл. страницу поменяй редирект
         return redirect('/')
+
+
+class UserRegister(View):
+    template = 'users/pages/auth_page.html'
+
+    @anonym_required_obj
+    def get(self, request: HttpRequest) -> HttpResponse:
+        form = UserCreationForm()
+        return render(
+            request,
+            self.template,
+            {
+                'title': _('Signup'),
+                'form': form
+            }
+        )
+
+    @anonym_required_obj
+    def post(self, request: HttpRequest) -> HttpResponse:
+        form = UserCreationForm(request.POST)
+        if not form.is_valid():
+            return render(
+                request,
+                self.template,
+                {
+                    'title': _('Signup'),
+                    'form': form
+                }
+            )
+        form.save()
+        # TODO: Django Messages
+        return redirect('users:users_login')
