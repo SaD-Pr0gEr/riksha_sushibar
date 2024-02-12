@@ -1,0 +1,16 @@
+{% load static %}
+<form class="form auth-form" method="post" action="{% url 'users:users_signup' %}">
+    {% csrf_token %}
+    <img src="{% static 'global/img/logo.svg' %}" alt="">
+    <h2>Signup</h2>
+    {% for field in form %}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        <p>{{ field }}</p>
+    {% endfor %}
+    {% include 'users/include/buttons/form-submit.html' %}
+    <p>Have an account? <a href="{% url 'users:users_login' %}">Signin</a></p>
+</form>
