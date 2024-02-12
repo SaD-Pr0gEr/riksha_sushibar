@@ -1,11 +1,16 @@
-# Django Project template
+# Riksha sushibar
+Simple shop to buy sushi
 
 
 ## Installation
 
 * Clone repository
 ```shell
-git clone https://github.com/SaD-Pr0gEr/django_basic_project.git
+# ssh
+git clone git@github.com:SaD-Pr0gEr/riksha_sushibar.git
+
+#https
+git clone https://github.com/SaD-Pr0gEr/riksha_sushibar.git
 ```
 
 * Install dependencies & activate environment
@@ -30,8 +35,11 @@ make run
 # RUN IT MANUALLY WITH SETTINGS
 # dev
 python manage.py runserver --settings=core.settings.dev
-# prod settings
+
+# with prod settings manually
 python manage.py runserver --settings=core.settings.prod
+# or with gunicorn
+gunicorn core.wsgi:application --bind 127.0.0.1:8000
 ```
 ## !!!WARNING!!!
 Don't use make run on production(use gunicorn/uvicorn etc.)
