@@ -4,11 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
 django-jazzmin = "*"
 python-dotenv = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+pillow = "*"
+django = "==4.2.10"
 
 [dev-packages]
 django-debug-toolbar = "*"

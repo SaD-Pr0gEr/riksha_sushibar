@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'apps.users.apps.UsersConfig',
+    'apps.products.apps.ProductsConfig',
 ]
 
 MIDDLEWARE = [
@@ -118,7 +119,13 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+PHOTOS_DIR = 'photos'
+PHOTOS_FULL_DIR_PATH = MEDIA_ROOT / PHOTOS_DIR
+PRODUCT_PHOTO_DIR = '/'.join([PHOTOS_DIR, 'product'])
+PRODUCT_PHOTO_FULL_DIR_PATH = MEDIA_ROOT / PRODUCT_PHOTO_DIR
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ICON_FORMATS = ['.svg']
 
 AUTH_USER_MODEL = 'users.User'
