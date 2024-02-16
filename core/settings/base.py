@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 from django.utils.log import DEFAULT_LOGGING
+from django.utils.translation import gettext_lazy
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -120,12 +121,37 @@ STATICFILES_DIRS = [
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 PHOTOS_DIR = 'photos'
-PHOTOS_FULL_DIR_PATH = MEDIA_ROOT / PHOTOS_DIR
 PRODUCT_PHOTO_DIR = '/'.join([PHOTOS_DIR, 'product'])
+PRODUCT_CATEGORY_PHOTO_DIR = '/'.join([
+    PRODUCT_PHOTO_DIR, 'categories',
+])
+PRODUCT_INGREDIENT_PHOTO_DIR = '/'.join([
+    PRODUCT_PHOTO_DIR, 'ingredients',
+])
+PRODUCT_TAG_PHOTO_DIR = '/'.join([
+    PRODUCT_PHOTO_DIR, 'tags',
+])
+PHOTOS_FULL_DIR_PATH = MEDIA_ROOT / PHOTOS_DIR
 PRODUCT_PHOTO_FULL_DIR_PATH = MEDIA_ROOT / PRODUCT_PHOTO_DIR
+PRODUCT_CATEGORY_FULL_DIR_PATH = MEDIA_ROOT / PRODUCT_CATEGORY_PHOTO_DIR
+PRODUCT_INGREDIENT_PHOTO_DIR_FULL_PATH = MEDIA_ROOT / PRODUCT_INGREDIENT_PHOTO_DIR
+PRODUCT_TAG_PHOTO_DIR_FULL_PATH = MEDIA_ROOT / PRODUCT_TAG_PHOTO_DIR
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ICON_FORMATS = ['.svg']
 
 AUTH_USER_MODEL = 'users.User'
+
+JAZZMIN_SETTINGS = {
+    'topmenu_links': [
+        {
+            'name': gettext_lazy('Home'),
+            'url': 'products:home'
+        }
+    ],
+    'site_title': gettext_lazy('Admin panel Riksha'),
+    'site_header': gettext_lazy('Admin panel Riksha'),
+    'site_brand': gettext_lazy('Admin panel Riksha'),
+    'welcome_sign': gettext_lazy('Admin panel Riksha'),
+}

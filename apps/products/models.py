@@ -34,6 +34,13 @@ class AbstractAttribute(models.Model):
 
 
 class Category(AbstractAttribute):
+    icon = models.FileField(
+        _('icon'),
+        validators=[validate_icon],
+        null=True,
+        blank=True,
+        upload_to=settings.PRODUCT_CATEGORY_PHOTO_DIR
+    )
 
     def __str__(self):
         return self.name
@@ -47,6 +54,13 @@ class Category(AbstractAttribute):
 
 
 class Ingredient(AbstractAttribute):
+    icon = models.FileField(
+        _('icon'),
+        validators=[validate_icon],
+        null=True,
+        blank=True,
+        upload_to=settings.PRODUCT_INGREDIENT_PHOTO_DIR
+    )
 
     def __str__(self):
         return self.name
@@ -60,6 +74,13 @@ class Ingredient(AbstractAttribute):
 
 
 class Tag(AbstractAttribute):
+    icon = models.FileField(
+        _('icon'),
+        validators=[validate_icon],
+        null=True,
+        blank=True,
+        upload_to=settings.PRODUCT_TAG_PHOTO_DIR
+    )
 
     def __str__(self):
         return self.name
@@ -96,6 +117,7 @@ class Product(models.Model):
     )
     slug = models.SlugField(_('URL'), max_length=128)
     photo = models.ImageField(_('Photo'), upload_to=settings.PRODUCT_PHOTO_DIR)
+    price = models.IntegerField(_('Price'))
     in_stock = models.BooleanField(_('Stock status'), default=True)
 
     @cached_property

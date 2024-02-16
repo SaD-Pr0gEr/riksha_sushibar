@@ -6,6 +6,7 @@ from django.views import View
 
 from .decorators import anonym_required_obj
 from .forms import LoginForm, UserCreationForm
+from ..products.models import Category
 
 
 class UserLogin(View):
@@ -20,7 +21,8 @@ class UserLogin(View):
             {
                 'title': _('Signin'),
                 'login': True,
-                'form': form
+                'form': form,
+                'product_categories': Category.objects.all(),
             }
         )
 
@@ -48,8 +50,7 @@ class UserLogin(View):
                 }
             )
         login(request, auth_user)
-        # TODO: Когда добавишь гл. страницу поменяй редирект
-        return redirect('/')
+        return redirect('products:home')
 
 
 class UserRegister(View):
@@ -63,7 +64,8 @@ class UserRegister(View):
             self.template,
             {
                 'title': _('Signup'),
-                'form': form
+                'form': form,
+                'product_categories': Category.objects.all()
             }
         )
 

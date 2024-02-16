@@ -1,0 +1,31 @@
+<header>{% load static %}
+    <div class="container header">
+        <div class="logo-container">
+            <a href="{% url 'products:home' %}"><img src="{% static 'global/img/logo.svg' %}" alt="site log"></a>
+        </div>
+        <div class="header-body">
+            <div class="top-menu-header-links">
+                <div class="call-number">
+                    <div class="call-number__info">
+                        <img src="{% static 'global/img/phone.svg' %}" alt="call phone icon">
+                        <a href="tel:+74956171424">+7 (495) 617-14-24</a>
+                    </div>
+                    <div class="work-time">
+                        <p>c 10:00 до 23:00</p>
+                    </div>
+                </div>
+                <a class="user-avatar" href="{% if user.is_anonymous %}{% url 'users:users_login' %}{% else %}#!{% endif %}">
+                    <img src="{% static 'global/img/user-avatar.svg' %}" alt="user avatar">
+                </a>
+            </div>
+            <div class="bottom-menu-header-links">
+                {% for category in product_categories %}
+                    <div class="link-container">
+                        <img src="{{ category.icon.url }}" alt="category photo">
+                        <p><a href="#!">{{ category.name }}</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</header>

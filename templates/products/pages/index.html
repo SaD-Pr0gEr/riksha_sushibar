@@ -1,0 +1,15 @@
+{% extends 'global/base.html' %}{% load static %}
+{% block title %} {{ title }} {% endblock title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'products/css/main_page.css' %}">
+{% endblock extra_head %}
+{% block body %}
+    <section class="container content-block">
+        <h2>Новинки</h2>
+        <div class="new-products">
+            {% for product in new_products %}
+                {% include 'products/include/product-card.html' %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock body %}

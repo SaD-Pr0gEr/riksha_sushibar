@@ -10,7 +10,6 @@ def anonym_required_obj(func):
             not request.user.is_anonymous, request.user.is_authenticated
         ]):
             # TODO: Django Messages
-            # TODO: redirect исправить
-            return redirect('/')
+            return redirect('products:home')
         return func(self, request, *args, **kwargs)
     return wrapper
