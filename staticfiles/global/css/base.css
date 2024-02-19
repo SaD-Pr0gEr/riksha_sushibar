@@ -89,22 +89,26 @@ header {
 
 .header {
     padding: 10px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-bottom: 100px;
 }
 
-.header div.logo-container {
+.header div.logo-container,
+.footer div.logo-container {
     width: 10%;
 }
 
-.header div.header-body {
+.header div.header-body,
+.footer div.footer-body {
     width: 85%;
 }
 
 .top-menu-header-links,
-.bottom-menu-header-links {
+.bottom-menu-header-links,
+.header,
+.call-number__info,
+.product-card .product-card-footer,
+.footer,
+.footer-body {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -126,12 +130,6 @@ header {
 
 .link-container {
     text-align: center;
-}
-
-.call-number__info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .call-number__info a {
@@ -174,12 +172,6 @@ header {
     transform: scale(1.02);
 }
 
-.product-card .product-card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .product-card > div:not(:last-child) {
     width: 100%;
     word-break: break-word;
@@ -198,7 +190,7 @@ header {
 }
 
 .product-tag p {
-    font-size: 9px;
+    font-size: 12px;
     font-weight: normal;
 }
 
@@ -266,4 +258,63 @@ header {
 
 .product-card > div.product-info {
     margin-bottom: 35px;
+}
+
+footer {
+    background-color: #222222;
+    padding: 20px;
+}
+
+.footer-body .socials a img {
+    width: 50px;
+    height: 50px;
+}
+
+
+.footer-categories-list {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-categories-list .link-container {
+    width: 30%;
+    margin-bottom: 15px;
+}
+
+.footer-categories-list .link-container p a {
+    color: white;
+}
+
+.footer-body .call-number {
+    color: white;
+    text-align: right;
+}
+
+.call-number__item {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.new-product.swiper-button-prev,
+.new-product.swiper-button-next {
+    padding: 30px 40px;
+    border-radius: 50%;
+    background-color: white;
+    top: 650px !important;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
+}
+
+.new-product.swiper-button-prev::after,
+.new-product.swiper-button-next::after {
+    color: #E07153;
+}
+
+.new-product.swiper-button-prev {
+    left: 80px !important;
+}
+
+.new-product.swiper-button-next {
+    right: 80px !important;
 }

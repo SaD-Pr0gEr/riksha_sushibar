@@ -119,6 +119,7 @@ class Product(models.Model):
     photo = models.ImageField(_('Photo'), upload_to=settings.PRODUCT_PHOTO_DIR)
     price = models.IntegerField(_('Price'))
     in_stock = models.BooleanField(_('Stock status'), default=True)
+    new_product = models.BooleanField(_('New product'), default=True)
 
     @cached_property
     def photo_tag(self):

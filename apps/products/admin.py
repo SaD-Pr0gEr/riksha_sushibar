@@ -52,10 +52,11 @@ class AttributeAdmin(ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'category', 'photo_tag']
+    list_display = ['id', 'name', 'category', 'new_product', 'in_stock', 'photo_tag']
     list_display_links = ['id', 'name']
     search_fields = ['id', 'name', 'category']
     list_filter = ['category',]
+    list_editable = ['new_product', 'in_stock']
     inlines = [
         ProductAttributeInline,
         ProductIngredientAdminInline,
