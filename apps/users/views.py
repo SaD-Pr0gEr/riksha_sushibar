@@ -1,10 +1,10 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 
-from .decorators import anonym_required_obj
+from .decorators import anonym_required_obj, login_required_obj
 from .forms import LoginForm, UserCreationForm
 
 
@@ -81,4 +81,12 @@ class UserRegister(View):
             )
         form.save()
         # TODO: Django Messages
+        return redirect('users:users_login')
+
+
+class UsersLogoutView(View):
+
+    @login_required_obj
+    def get(self, request: HttpRequest) -> HttpResponse:
+        logout(request)
         return redirect('users:users_login')
