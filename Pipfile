@@ -10,6 +10,7 @@ gunicorn = "*"
 psycopg2-binary = "*"
 pillow = "*"
 django = "==4.2.10"
+ipython = "*"
 
 [dev-packages]
 django-debug-toolbar = "*"

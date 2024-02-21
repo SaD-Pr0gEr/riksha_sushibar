@@ -14,15 +14,26 @@
                         <p>c 10:00 до 23:00</p>
                     </div>
                 </div>
-                <a class="user-avatar" href="{% if user.is_anonymous %}{% url 'users:users_login' %}{% else %}#!{% endif %}">
-                    <img src="{% static 'global/img/user-avatar.svg' %}" alt="user avatar">
-                </a>
+                {% if user.is_anonymous %}
+                    <a class="user-avatar" href="{% url 'users:users_login' %}">
+                        <img src="{% static 'global/img/user-avatar.svg' %}" alt="user avatar">
+                    </a>
+                {% else %}
+                    {% if user.is_superuser %}
+                        <a class="user-avatar" href="{% url 'admin:index' %}">
+                            <img src="{% static 'global/img/user-admin.svg' %}" alt="exit link">
+                        </a>
+                    {% endif %}
+                    <a class="user-avatar" href="{% url 'users:users_logout' %}">
+                        <img src="{% static 'global/img/exit-black.svg' %}" alt="exit link">
+                    </a>
+                {% endif %}
             </div>
             <div class="bottom-menu-header-links">
                 {% for category in product_categories %}
                     <div class="link-container">
                         <img src="{{ category.icon.url }}" alt="category photo">
-                        <p><a href="#!">{{ category.name }}</a></p>
+                        <p><a href="{{ category.get_category_page_url }}">{{ category.name }}</a></p>
                     </div>
                 {% endfor %}
             </div>

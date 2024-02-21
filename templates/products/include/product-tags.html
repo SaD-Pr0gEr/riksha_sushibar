@@ -1,0 +1,11 @@
+<div class="tags">{% load urls %}
+    {% for tag in tags %}
+        <a href="{% fix_url request.get_full_path tag=tag.slug %}"
+           class="tags-item {% if tag.slug == active_tag_slug %}active{% endif %}"
+        >
+            <img src="{{ tag.icon.url }}" alt="{{ tag.name }}">
+            {{ tag.name }}
+        </a>
+    {% endfor %}
+    <a href="{{ request.path }}" class="tags-item">Сбросить фильтры</a>
+</div>

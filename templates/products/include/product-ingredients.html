@@ -1,0 +1,10 @@
+<div class="ingredients">{% load urls %}
+    {% for ingredient in ingredients %}
+        <a href="{% fix_url request.get_full_path ingredient=ingredient.slug %}"
+           class="ingredients-item {% if ingredient.slug == active_ingredient_slug %}active{% endif %}"
+        >
+            <img src="{{ ingredient.icon.url }}" alt="{{ ingredient.name }}">
+            {{ ingredient.name }}
+        </a>
+    {% endfor %}
+</div>

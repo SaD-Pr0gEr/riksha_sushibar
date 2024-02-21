@@ -12,7 +12,7 @@
             <div class="footer-categories-list">
                 {% for category in product_categories %}
                     <div class="link-container">
-                        <p><a href="#!">{{ category.name }}</a></p>
+                        <p><a href="{{ category.get_category_page_url }}">{{ category.name }}</a></p>
                     </div>
                 {% endfor %}
             </div>

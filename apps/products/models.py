@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.templatetags.static import static
+from django.urls import reverse_lazy
 from django.utils.functional import cached_property
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
@@ -41,6 +42,12 @@ class Category(AbstractAttribute):
         blank=True,
         upload_to=settings.PRODUCT_CATEGORY_PHOTO_DIR
     )
+
+    def get_category_page_url(self):
+        return reverse_lazy(
+            'products:category_products',
+            kwargs={'category_slug': self.slug}
+        )
 
     def __str__(self):
         return self.name

@@ -6,3 +6,26 @@
     width: 100%;
     height: 100%;
 }
+
+
+.new-product.swiper-button-prev,
+.new-product.swiper-button-next {
+    padding: 30px 40px;
+    border-radius: 50%;
+    background-color: white;
+    top: 650px !important;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
+}
+
+.new-product.swiper-button-prev::after,
+.new-product.swiper-button-next::after {
+    color: #E07153;
+}
+
+.new-product.swiper-button-prev {
+    left: 80px !important;
+}
+
+.new-product.swiper-button-next {
+    right: 80px !important;
+}

@@ -1,0 +1,8 @@
+<div class="sitemap">
+    {% for link in sitemap_links %}
+        <a href="{{ link.link }}" class="sitemap-item">{{ link.name }}</a>
+        {% if not forloop.last %}
+            <p class="sitemap-item delimiter">//</p>
+        {% endif %}
+    {% endfor %}
+</div>
