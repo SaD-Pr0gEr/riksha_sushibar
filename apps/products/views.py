@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -58,8 +59,13 @@ class ProductCategoryPage(View):
 
     def get(self, request: HttpRequest, category_slug: str) -> HttpResponse:
         category = get_object_or_404(Category, slug=category_slug)
-        ingredient_slug = request.GET.get('ingredient')
-        tag_slug = request.GET.get('tag')
+        ingredient_slug: str = request.GET.get('ingredient')
+        tag_slug: str = request.GET.get('tag')
+        paginator_page: str | int = request.GET.get('page')
+        if not paginator_page or not paginator_page.isdecimal():
+            paginator_page = 1
+        else:
+            paginator_page = int(paginator_page)
         queryset = self.get_queryset(category_slug)
         if ingredient_slug:
             queryset = queryset.filter(
@@ -69,6 +75,8 @@ class ProductCategoryPage(View):
             queryset = queryset.filter(
                 product_tags__tag__slug=tag_slug
             )
+        products_paginator = Paginator(queryset.order_by('id'), 6)
+        current_page = products_paginator.get_page(paginator_page)
         return render(
             request,
             self.template,
@@ -84,9 +92,11 @@ class ProductCategoryPage(View):
                 'product_categories': Category.objects.all(),
                 'ingredients': Ingredient.objects.all(),
                 'tags': Tag.objects.all(),
-                'category_products': queryset,
+                'category_products': current_page,
                 'current_category': category,
                 'active_ingredient_slug': ingredient_slug,
-                'active_tag_slug': tag_slug
+                'active_tag_slug': tag_slug,
+                'paginator': products_paginator,
+                'current_page': paginator_page
             }
         )

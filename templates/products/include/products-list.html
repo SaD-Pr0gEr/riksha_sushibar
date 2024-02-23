@@ -1,5 +1,5 @@
 <div class="products">
-    {% for product in category_products %}
+    {% for product in category_products.object_list %}
         {% include 'products/include/product-card.html' %}
     {% endfor %}
 </div>

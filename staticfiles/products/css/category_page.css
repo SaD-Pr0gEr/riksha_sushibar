@@ -5,6 +5,10 @@
     margin-bottom: 20px;
 }
 
+.tags {
+    margin-bottom: 75px;
+}
+
 .ingredients-item,
 .tags-item {
     display: flex;
@@ -26,6 +30,8 @@
 .ingredients-item img,
 .tags-item img {
     margin-right: 10px;
+    height: 30px;
+    width: 30px;
 }
 
 .products {
@@ -34,6 +40,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
+    margin-bottom: 50px;
 }
 
 .products .product-card {

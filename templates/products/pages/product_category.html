@@ -10,5 +10,8 @@
         {% include 'products/include/product-ingredients.html' %}
         {% include 'products/include/product-tags.html' %}
         {% include 'products/include/products-list.html' %}
+        {% if paginator.count %}
+            {% include 'global/include/pagination.html' %}
+        {% endif %}
     </section>
 {% endblock body %}
