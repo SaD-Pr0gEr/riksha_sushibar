@@ -1,0 +1,49 @@
+.ingredients,
+.tags {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tags {
+    margin-bottom: 75px;
+}
+
+.ingredients-item,
+.tags-item {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    padding: 10px;
+    border: 1px #E8E8E8 solid;
+    border-radius: 10px;
+    color: black;
+}
+
+.ingredients-item:hover,
+.tags-item:hover,
+.tags-item.active,
+.ingredients-item.active {
+    border: 1px solid #E07153;
+}
+
+.ingredients-item img,
+.tags-item img {
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.products {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.products .product-card {
+    width: 30%;
+    margin-bottom: 30px;
+}

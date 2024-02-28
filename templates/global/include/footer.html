@@ -1,0 +1,25 @@
+<footer>{% load static %}
+    <div class="container footer">
+        <div class="logo-container">
+            <img src="{% static 'global/img/logo_white.svg' %}" alt="">
+        </div>
+        <div class="footer-body">
+            <div class="socials">
+                <a href="#!"><img src="{% static 'global/img/facebook-white.svg' %}" alt="facebook"></a>
+                <a href="#!"><img src="{% static 'global/img/instagram-white.svg' %}" alt="instagram"></a>
+                <a href="#!"><img src="{% static 'global/img/vk-white.svg' %}" alt="vk"></a>
+            </div>
+            <div class="footer-categories-list">
+                {% for category in product_categories %}
+                    <div class="link-container">
+                        <p><a href="{{ category.get_category_page_url }}">{{ category.name }}</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="call-number">
+                <a class="call-number__item" href="tel:+74956171424"><h2>+7 (495) 617-14-24</h2></a>
+                <p class="work-time call-number__item">С 10:00 до 23:00</p>
+            </div>
+        </div>
+    </div>
+</footer>

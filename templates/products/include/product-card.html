@@ -1,0 +1,33 @@
+<div class="product-card {{ extra_classes }}">
+    <div class="product-photo-container">
+        <div class="product-tags">
+            {% for tag in product.product_tags.all %}
+                <div class="product-tag">
+                    <img src="{{ tag.tag.icon.url }}" alt="">
+                    <p>{{ tag.tag.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="product-photo">
+            <img src="{{ product.photo.url }}" alt="">
+        </div>
+    </div>
+    <div class="product-attrs">
+        {% for product_attr in product.product_attributes.all %}
+            <span class="product-attr">{{ product_attr.value }} {{ product_attr.attribute.name }}</span>
+            <span class="dot"></span>
+        {% endfor %}
+    </div>
+    <div class="product-info">
+        <h2 class="product-name">{{ product.name }}</h2>
+        <div class="product-ingredients">
+            {% for product_ingr in product.product_ingredients.all %}
+                <span>{{ product_ingr.ingredient.name }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="product-card-footer">
+        <p>{{ product.price }} ₽</p>
+        <a class="order-button form-submit" href="#!">Заказать</a>
+    </div>
+</div>

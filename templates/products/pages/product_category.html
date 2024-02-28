@@ -1,0 +1,17 @@
+{% extends 'global/base.html' %}{% load static %}
+{% block title %} {{ title }} {% endblock title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'products/css/category_page.css' %}">
+{% endblock extra_head %}
+{% block body %}
+    <section class="container content-block">
+        {% include 'global/include/sitemap.html' %}
+        <h2>{{ current_category.name }}</h2>
+        {% include 'products/include/product-ingredients.html' %}
+        {% include 'products/include/product-tags.html' %}
+        {% include 'products/include/products-list.html' %}
+        {% if paginator.count %}
+            {% include 'global/include/pagination.html' %}
+        {% endif %}
+    </section>
+{% endblock body %}

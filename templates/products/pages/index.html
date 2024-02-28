@@ -1,0 +1,39 @@
+{% extends 'global/base.html' %}{% load static %}
+{% block title %} {{ title }} {% endblock title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'products/css/main_page.css' %}">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+{% endblock extra_head %}
+{% block body %}
+    <section class="container content-block">
+        <h2>Новинки</h2>
+        <div class="swiper new-products">
+            <div class="swiper-wrapper">
+                {% for product in new_products %}
+                    {% with extra_classes='swiper-slide' %}
+                        {% include 'products/include/product-card.html' %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="new-product swiper-button-prev"></div>
+        <div class="new-product swiper-button-next"></div>
+    </section>
+{% endblock body %}
+{% block extra_body %}
+    <script type="module">
+        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
+
+        const newProductsSwiper = new Swiper(".new-products", {
+            navigation: {
+                nextEl: ".new-product.swiper-button-next",
+                prevEl: ".new-product.swiper-button-prev",
+            },
+            slidesPerView: 3.3,
+            spaceBetween: 50,
+        });
+    </script>
+{% endblock extra_body %}
