@@ -108,7 +108,10 @@ header {
 .call-number__info,
 .product-card .product-card-footer,
 .footer,
-.footer-body {
+.footer-body,
+.product-footer,
+.product-footer__buttons,
+.product-order-detail {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -249,7 +252,7 @@ header {
     content: ",";
 }
 
-.product-card-footer .order-button {
+.order-button {
     font-size: 18px;
     font-weight: bold;
     padding: 15px 25px;
@@ -260,7 +263,7 @@ header {
     font-size: 32px;
 }
 
-.product-card-footer .order-button:hover {
+.order-button:hover {
     color: white;
 }
 

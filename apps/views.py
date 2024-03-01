@@ -1,7 +1,7 @@
 from typing import Any
 
 from django.db.models import QuerySet
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views import View
@@ -35,11 +35,11 @@ class BasePagesView(View):
             'title': self.page_title
         }
 
-    def get(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
+    def get(self, *args, **kwargs) -> HttpResponse:
         if not self.template:
             raise NotImplemented
         return render(
-            request,
+            self.request,
             self.template,
             context=self.get_context_data()
         )

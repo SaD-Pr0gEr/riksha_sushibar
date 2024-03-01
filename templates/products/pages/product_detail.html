@@ -1,0 +1,12 @@
+{% extends 'global/base.html' %}{% load static %}
+{% block title %} {{ title }} {% endblock title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'products/css/product-detail.css' %}">
+{% endblock extra_head %}
+{% block body %}
+<section class="container content-block">
+    {% include 'global/include/sitemap.html' %}
+    <h2>{{ product.name }}</h2>
+    {% include 'products/include/product_detail.html' %}
+</section>
+{% endblock body %}

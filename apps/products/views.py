@@ -2,7 +2,7 @@ from typing import Any
 
 from django.core.paginator import Paginator
 from django.db.models import QuerySet
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext_lazy as _
 
@@ -73,9 +73,9 @@ class ProductCategoryPage(BaseProductsView):
     def get(self, request: HttpRequest, category_slug: str) -> HttpResponse:
         category = get_object_or_404(Category, slug=category_slug)
         self.page_title = category.name
-        ingredient_slug: str = request.GET.get('ingredient')
-        tag_slug: str = request.GET.get('tag')
-        paginator_page: str | int = request.GET.get('page', '1')
+        ingredient_slug: str = self.request.GET.get('ingredient')
+        tag_slug: str = self.request.GET.get('tag')
+        paginator_page: str | int = self.request.GET.get('page', '1')
         paginator_page = 1 if not paginator_page.isdecimal() else int(paginator_page)
         queryset: QuerySet[Product] = self.filter_queryset(
             category__slug=category.slug,
@@ -92,4 +92,38 @@ class ProductCategoryPage(BaseProductsView):
                 tag_slug=tag_slug,
                 active_ingredient_slug=ingredient_slug
             )
+        )
+
+
+class ProductDetailPage(BaseProductsView):
+    template = 'products/pages/product_detail.html'
+
+    def get_sitemap_links(self, product: Product) -> list[dict[str, Any]]:
+        return super().get_sitemap_links() + [
+            {
+                'link': product.category.get_category_page_url(),
+                'name': product.category.name
+            },
+            {
+                'link': product.get_product_detail_url(),
+                'name': product.name
+            }
+        ]
+
+    def get_context_data(self, product: Product) -> dict:
+        context = {
+            'title': product.name,
+            'sitemap_links': self.get_sitemap_links(product),
+            'product': product
+        }
+        return super().get_context_data() | context
+
+    def get(self, request: HttpRequest, product_slug: str):
+        product: Product | None = self.filter_queryset(slug=product_slug).first()
+        if not product:
+            raise Http404('product not found')
+        return render(
+            request,
+            self.template,
+            self.get_context_data(product)
         )
