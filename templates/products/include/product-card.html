@@ -28,6 +28,6 @@
     </div>
     <div class="product-card-footer">
         <p>{{ product.price }} ₽</p>
-        <a class="order-button form-submit" href="#!">Заказать</a>
+        <a class="order-button form-submit" href="{{ product.get_product_detail_url }}">Заказать</a>
     </div>
 </div>

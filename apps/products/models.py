@@ -134,6 +134,12 @@ class Product(models.Model):
             f'<img src="{self.photo.url}" height="50" width="75" />'
         )
 
+    def get_product_detail_url(self):
+        return reverse_lazy(
+            'products:product_detail',
+            kwargs={'product_slug': self.slug}
+        )
+
     def __str__(self):
         return self.name
 
@@ -143,6 +149,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = _('Product')
         verbose_name_plural = _('Products')
+        ordering = ('id',)
 
 
 class ProductIngredient(models.Model):
