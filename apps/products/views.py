@@ -34,8 +34,8 @@ class ProductsMainPage(BaseProductsView):
     def get_context_data(self, *args, **kwargs) -> dict:
         return super().get_context_data() | {
             'new_products': self.queryset.filter(
-                in_stock=True, new_product=True
-            ).all()
+                new_product=True
+            )[:5]
         }
 
 

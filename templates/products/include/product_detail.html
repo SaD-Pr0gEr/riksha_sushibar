@@ -21,12 +21,16 @@
         <div class="product-footer">
             <div class="product-order-detail">
                 <div class="product-price">
-                    {{ product.price }} ₽
+                    <span>{{ product.price }}</span> <strong>₽</strong>
                 </div>
-                <div class="counter">1</div>
+                <div class="product counter">
+                    <span class="decrement">—</span>
+                    <div class="counter-value"></div>
+                    <span class="increment">+</span>
+                </div>
             </div>
             <div class="product-footer__buttons">
-                <a href="#!" class="order-button form-submit">Заказать</a>
+                <a href="#!" class="order-button form-submit js-modal" data-modal="#instant_order">Заказать</a>
                 <a href="#!" class="order-button form-submit">В корзину</a>
             </div>
         </div>

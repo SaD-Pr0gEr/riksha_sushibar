@@ -1,0 +1,26 @@
+<form action="#!" id="instant_order" method="post" class="modal-window">
+    <p class="modal-close">X</p>
+    <h3>Оформить заказ</h3>
+    <div class="wrap-center-middle">
+        {#        <button type="button" class="js-modal" data-modal="#modal_1">Открыть</button>#}
+        <br>
+        <div>
+            <div class="product-instant-order">
+                <div class="product-instant-order-item product-image">
+                    <img src="{{ product.photo.url }}" alt="product photo">
+                </div>
+                <h4 class="product-instant-order-item">{{ product.name }}</h4>
+                <div class="product-detail-order counter">
+                    <span class="decrement">—</span>
+                    <div class="counter-value"></div>
+                    <span class="increment">+</span>
+                </div>
+                <p class="product-instant-order-item product-price"><span>{{ product.price }}</span> <span>₽</span></p>
+            </div>
+        </div>
+    </div>
+    <h4 class="instant-order-sum">Сумма заказа: <span>{{ product.price }}</span> <span>₽</span></h4>
+    <input type="hidden" name="product_id" value="{{ product.id }}" />
+    <input type="hidden" name="product_count" value="1">
+    <button type="submit" class="form-submit">Оформить заказ</button>
+</form>
