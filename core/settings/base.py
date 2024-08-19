@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 from django.utils.log import DEFAULT_LOGGING
-from django.utils.translation import gettext_lazy
+from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -21,6 +21,7 @@ INSTALLED_APPS = [
 
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
+    'apps.reviews.apps.ReviewsConfig',
 ]
 
 MIDDLEWARE = [
@@ -131,11 +132,17 @@ PRODUCT_INGREDIENT_PHOTO_DIR = '/'.join([
 PRODUCT_TAG_PHOTO_DIR = '/'.join([
     PRODUCT_PHOTO_DIR, 'tags',
 ])
+PRODUCT_REVIEWS_DIR = '/'.join([
+    PRODUCT_PHOTO_DIR, 'reviews'
+])
 PHOTOS_FULL_DIR_PATH = MEDIA_ROOT / PHOTOS_DIR
 PRODUCT_PHOTO_FULL_DIR_PATH = MEDIA_ROOT / PRODUCT_PHOTO_DIR
 PRODUCT_CATEGORY_FULL_DIR_PATH = MEDIA_ROOT / PRODUCT_CATEGORY_PHOTO_DIR
-PRODUCT_INGREDIENT_PHOTO_DIR_FULL_PATH = MEDIA_ROOT / PRODUCT_INGREDIENT_PHOTO_DIR
+PRODUCT_INGREDIENT_PHOTO_DIR_FULL_PATH = (
+    MEDIA_ROOT / PRODUCT_INGREDIENT_PHOTO_DIR
+)
 PRODUCT_TAG_PHOTO_DIR_FULL_PATH = MEDIA_ROOT / PRODUCT_TAG_PHOTO_DIR
+PRODUCT_REVIEWS_DIR_FULL_DIR = MEDIA_ROOT / PRODUCT_REVIEWS_DIR
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -146,12 +153,12 @@ AUTH_USER_MODEL = 'users.User'
 JAZZMIN_SETTINGS = {
     'topmenu_links': [
         {
-            'name': gettext_lazy('Home'),
+            'name': _('Home'),
             'url': 'products:home'
         }
     ],
-    'site_title': gettext_lazy('Admin panel Riksha'),
-    'site_header': gettext_lazy('Admin panel Riksha'),
-    'site_brand': gettext_lazy('Admin panel Riksha'),
-    'welcome_sign': gettext_lazy('Admin panel Riksha'),
+    'site_title': _('Admin panel Riksha'),
+    'site_header': _('Admin panel Riksha'),
+    'site_brand': _('Admin panel Riksha'),
+    'welcome_sign': _('Admin panel Riksha'),
 }
